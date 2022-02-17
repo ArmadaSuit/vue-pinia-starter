@@ -1,30 +1,55 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <div class="loader-wrap" v-if="systemStore.isLoading">
+    <div class="loader">loading</div>
+  </div>
   <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import { useSystemStore } from "./stores/system-store";
+
+export default defineComponent({
+  setup() {
+    const systemStore = useSystemStore();
+    return { systemStore };
+  },
+});
+</script>
 
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+.loader-wrap {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  z-index: 1000;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.loader {
+  font-size: 32px;
+  animation: flash 0.3s linear infinite;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
   }
 }
 </style>
