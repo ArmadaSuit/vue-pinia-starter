@@ -1,0 +1,5 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "liveServer.settings.root": "/dist",
+  "liveServer.settings.NoBrowser": true
+}
