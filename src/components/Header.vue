@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div>Wonderfull Shop</div>
+    <div>Wonderful Shop</div>
     <div class="cart">
       <i class="bx bx-cart" @mouseover="mouseover" @mouseleave="mouseleave">
         <div class="cart-abstract" v-if="isShowCart && userStore.getCartSize">
